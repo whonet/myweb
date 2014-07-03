@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params) # 健壮参数 原来是(paroms[:user]) 
   	if @user.save
-  	  flash[:success] = "欢迎来到“标我吧”网！"
+      sign_in @user
+  	  flash[:success] = "欢迎来到“标我吧”议价平台！"
       redirect_to @user
   	else
   	  render 'new'
