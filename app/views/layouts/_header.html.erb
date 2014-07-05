@@ -5,15 +5,17 @@
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "首页", root_path %></li>
-          <% if signed_in? %>
-            <li><%= link_to "Users", '#' %></li>
+          <% if signed_in? && current_user.admin? %>
+            <li><%= link_to "用户列表(管理员专用)", users_path %></li>
+          <% end %>
+          <% if signed_in? %>            
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                账户中心 <b class="caret"></b>
+                <%= current_user.name %>账户中心 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "个人资料", current_user %></li>
-                <li><%= link_to "设置", '#' %></li>
+                <li><%= link_to "设置", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "退出", signout_path, method: "delete" %>
@@ -21,6 +23,7 @@
               </ul>
             </li>
           <% else %>
+            <li><%= link_to "免费注册", signup_path %></li>
             <li><%= link_to "登录", signin_path %></li>
           <% end %>
         </ul>
