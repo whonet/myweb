@@ -1,12 +1,11 @@
-<div class="center hero-unit">
-  <h1>标我吧</h1>
+<h1>我要买</h1>
 
-  <h2>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
+<ul class="users">
+  <% @users.each do |user| %>
+    <h2>
+      <%= link_to user.name, user %>
+    </h2>
+  <% end %>
+</ul>
 
-  <%= link_to "免费注册", signup_path, class: "btn btn-large btn-primary" %>
-</div>
 
