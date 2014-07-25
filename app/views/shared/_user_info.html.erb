@@ -1,0 +1,9 @@
+<h1>
+  <%= current_user.name %>
+</h1>
+<span>
+  <%= link_to "个人资料", current_user %>
+</span>
+<span>
+  <%= pluralize(current_user.microposts.count, "") %> 个需求已发布
+</span>
